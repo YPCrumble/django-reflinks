@@ -38,7 +38,9 @@ class ReferralHit(models.Model):
 	ip = models.GenericIPAddressField(help_text="IP address at hit time")
 	user_agent = models.TextField(blank=True, help_text="User-Agent at hit time")
 	http_referer = models.TextField(blank=True, help_text="Referer header at hit time")
-	next = models.URLField(blank=True, help_text="The ?next parameter when the link was hit.")
+	next = models.URLField(
+		blank=True, help_text="The ?next parameter when the link was hit.", max_length=500
+    )
 	confirmed = models.DateTimeField(
 		null=True, blank=True, db_index=True,
 		help_text="If set, the datetime at which the hit was marked as a successful referral."
